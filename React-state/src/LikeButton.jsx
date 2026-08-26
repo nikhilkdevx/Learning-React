@@ -1,10 +1,19 @@
+import { useState } from "react";
+
 export default function LikeButton(){
-    let clikced = () =>{
-        console.log("clicked");
+    let [isLiked,setIsLiked] = useState(false);
+    let toggleLike = () =>{
+        setIsLiked(!isLiked);
     }
+    let LikeStyle = {color : "red"};
     return(
         <div>
-            <p onClick={clikced}><i class="fa-solid fa-heart"></i></p>
+            <p onClick={toggleLike}>
+            {isLiked ? 
+            (<i className="fa-solid fa-heart" style={LikeStyle}></i>
+            ) : (<i className="fa-regular fa-heart"></i>
+            )}    
+            </p>
         </div>
     );
-};
+}; 
