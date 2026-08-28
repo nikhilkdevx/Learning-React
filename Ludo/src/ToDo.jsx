@@ -17,6 +17,9 @@ export default function ToDo(){
     setToDos((prevTodos)=>todos.filter((prevTodos)=> prevTodos.id != id));
     
     }
+    let taskDone = (id) =>{
+        console.log(id);
+    }
     return(
         <div>
             <input placeholder="Enter Tasks" 
@@ -37,7 +40,10 @@ export default function ToDo(){
                         <span>{todo.task}</span> 
                         &nbsp;
                         &nbsp;
-                        <button onClick={()=>deleteTodo(todo.id)}>Delete</button>   
+                        <button onClick={()=>deleteTodo(todo.id)}>Delete</button> 
+                        &nbsp;
+                        &nbsp;
+                        <button onClick={()=>taskDone(todo.id)}>Done</button>  
                     </li>
                 })
                 }
