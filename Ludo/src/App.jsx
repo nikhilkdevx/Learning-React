@@ -1,13 +1,14 @@
 import './App.css'
-import LudoBoard from './LudoBoard'
-import ToDo from './ToDo'
+import Lottery from './Lottery'
 function App() {
-  
+  let winCondition = (ticket) => {
+      return ticket.every((num) => num == ticket[0]);
+    };
   return (
     <>
-     <ToDo/> 
+     <Lottery n = {3} winCondition = {winCondition}/>
     </>
-  )
+  );
 }
 
 export default App
