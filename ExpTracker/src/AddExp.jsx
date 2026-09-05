@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-export default function AddExp(){
-    let [orgData,setOrgData] = useState([]);
+export default function AddExp({setOrgData}){
     
     let[expenseData,setExpenseData] = useState({
         expense : "",
@@ -9,8 +9,6 @@ export default function AddExp(){
         category : "",
         date: "",
     });
-
-    console.log(orgData);
 
     let handleInputChange = (event) => {
         const {name,value} = event.target;
@@ -20,19 +18,24 @@ export default function AddExp(){
             [name]: value,
         }));
     }
+
+    const newExpense = {
+        ...expenseData,
+        id: uuidv4()
+    };
     
     let saveExpData = (event) => {
         event.preventDefault();
-        setOrgData([...orgData,expenseData]);
+        setOrgData((currData)=>[
+            ...currData,newExpense
+        ]);
         console.log(expenseData);
         setExpenseData({
         expense : "",
         amount : "",
         category : "",
         date: "",
-        });
-        
-        
+        });   
     }
     
     return (
