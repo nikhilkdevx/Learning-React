@@ -57,3 +57,5 @@ This repository will continue to grow as I learn more about React and build more
 > **Learning by building, experimenting, and improving — one commit at a time.**
 
 ---
+
+⭐ This repository represents my ongoing journey of learning React.
