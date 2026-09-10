@@ -4,16 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-export default function ExpCard({expense}) {
-    const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-    );
-
+export default function ExpCard({expense,onDelete}) {
     const card = (
     
         <CardContent>
@@ -28,7 +19,7 @@ export default function ExpCard({expense}) {
             {expense.date}
             <br />
         </Typography>
-        <button>Delete</button>
+        <button onClick={()=>onDelete(expense.id)}>Delete</button>
         </CardContent>
         
     

@@ -1,14 +1,21 @@
 import { useState } from "react";
 import ExpCard from "./ExpCard";
 
-export default function ShowExp({orgData}){
+export default function ShowExp({orgData,setOrgData}){
     const [selectedCategory,setSelectedCategory] = useState("");
     let handleFilterChange = (event) => {
         setSelectedCategory(event.target.value);
     }
     const filterdData = selectedCategory === "" ? orgData :
         orgData.filter(expense => expense.category === selectedCategory);
-    return (
+    
+    const handleDelete = (id) => {
+        setOrgData(currData => 
+            currData.filter(expense => expense.id !== id));
+    }
+    
+    
+        return (
         <>
             <h5>Filter &nbsp;&nbsp;
                 <select onChange={handleFilterChange}>
@@ -20,7 +27,7 @@ export default function ShowExp({orgData}){
                 </select>
             </h5>
            {filterdData.map((expense)=>{
-            return <ExpCard expense= {expense} key = {expense.id}/>
+            return <ExpCard expense= {expense} key = {expense.id} onDelete = {handleDelete}  />
            })}
         </>
     );

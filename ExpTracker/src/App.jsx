@@ -13,7 +13,7 @@ function App() {
         total = total + Number(data.amount);
         return total;
       },0)}</h5>
-      <ShowExp orgData = {orgData}/>
+      <ShowExp orgData = {orgData} setOrgData = {setOrgData} />
     </>
   )
 }

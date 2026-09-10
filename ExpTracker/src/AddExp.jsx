@@ -29,7 +29,7 @@ export default function AddExp({setOrgData}){
         setOrgData((currData)=>[
             ...currData,newExpense
         ]);
-        console.log(expenseData);
+        console.log(newExpense);
         setExpenseData({
         expense : "",
         amount : "",
