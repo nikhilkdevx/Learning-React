@@ -5,15 +5,29 @@ const API_KEY = "72fb7137";
 
 export default function InputBox({setMovieData}) {
     const [formData, setFormData] = useState("");
+    const [loading,setLoading] = useState(false);
+    
     const handleInputChange = ((event) => {
         setFormData(event.target.value);
     });
+    
     const handleSubmit =  (async(event) => {
         event.preventDefault();
-        const movieData =await fetch(`${API_URL}?t=${formData}&apikey=${API_KEY}`);
-        const jsonData = await movieData.json();
-        console.log(jsonData);
-        const newData = {
+        
+        if(formData.trim() === ""){
+            alert("Enter Movie Name");
+            return;
+        }
+        setLoading(true);
+        try{
+            const movieData =await fetch(`${API_URL}?t=${formData}&apikey=${API_KEY}`);
+            const jsonData = await movieData.json();
+            if(jsonData.Response === "False"){
+            alert("Movie Not Found");
+            return;
+            }
+        
+            setMovieData({
             title : jsonData.Title,
             year : jsonData.Year,
             imdb : jsonData.imdbRating,
@@ -21,18 +35,26 @@ export default function InputBox({setMovieData}) {
             director : jsonData.Director,
             released : jsonData.Released,
             image : jsonData.Poster,
-        };
-        console.log(newData);
-        setMovieData(newData);
-        setFormData("");
+            });
+            setFormData("");
+        } catch(error){
+            alert("Something went wrong");
+            console.log(error)
+        } finally {
+            setLoading(false);
+        }
+        
     });
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input placeholder="Enter Movie Name" value={formData}
-                    onChange={handleInputChange} type="text" name="movie" id="movie"></input>
+                <input placeholder="Inception" value={formData}
+                    onChange={handleInputChange} type="text" 
+                    name="movie" id="movie" disabled = {loading}></input>
                 &nbsp;&nbsp;
-                <button>Search</button>
+                <button disabled = {loading}>
+                    {loading ? "Searching..." : "Search"}
+                </button>
             </form>
         </>
     );
