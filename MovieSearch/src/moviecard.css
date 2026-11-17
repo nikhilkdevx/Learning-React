@@ -1,0 +1,19 @@
+.MovieCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    
+}
+
+.Card{
+    max-width: fit-content;
+    
+}
+
+.cardImage{
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    
+}

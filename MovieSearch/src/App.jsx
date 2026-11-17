@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import InputBox from './InputBox'
 import MovieCard from './MovieCard';
+import { ClassNames } from '@emotion/react';
 
 function App() {
   const [movieData, setMovieData] = useState({
@@ -15,7 +16,7 @@ function App() {
   });
 
   return (
-    <>
+    < >
       <InputBox  setMovieData = {setMovieData} />
       <MovieCard movieData = {movieData} /> 
     </>
