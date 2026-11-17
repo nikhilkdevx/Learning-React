@@ -13,6 +13,7 @@ The repository contains different projects and practice exercises covering vario
 - **Forms** — Practice with handling forms, inputs, and form state in React.
 - **Ludo** — A small project for practicing React concepts through a game-based implementation.
 - **React State** — Practice and experiments focused on React state and state management.
+- **TailWind Css** — Learned Tailwind by an activity.
 
 ## 🎯 Learning Goals
 
